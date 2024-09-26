@@ -1,23 +1,26 @@
 #!/bin/bash
 
-DOTFILES_DIR=~/dotfiles
-EXCLUDE_PREFIX="_"
+DOTFILES_DIR="$HOME/dotfiles/dots"
 
-echo "Creating symbolic links..."
+echo "シンボリックリンクを作成しています..."
 
-for file in "$DOTFILES_DIR"/*/.[^.]*; do
-    base_dir=$(basename "$(dirname "$file")")
+# dotfilesディレクトリ内の隠しファイルに対してループ
+for file in "$DOTFILES_DIR"/.[^.]*; do
+    # ホームディレクトリ直下に作成するパスを計算
+    link_name="$HOME/${file#"$DOTFILES_DIR"/}"
 
-    if [[ $base_dir == $EXCLUDE_PREFIX* ]]; then
-	echo "Skipping excluded directory: $base_dir"
-        continue
+    # シンボリックリンクを作成
+    if ln -sfn "$file" "$link_name"; then
+        echo "リンクを作成しました: $file -> $link_name"
+    else
+        echo "リンク作成に失敗しました: $file" >&2
     fi
-
-    link_name=~/${file#"$DOTFILES_DIR"/*/}
-
-    ln -sfn "$file" "$link_name"
-
-    echo "Link created: $file -> $link_name"
 done
 
-echo "Symbolic links created in the home directory."
+# fishディレクトリ用のリンク作成
+# if [ ! -d "$HOME/.config" ]; then
+#     mkdir -p "$HOME/.config"
+# fi
+# ln -sfn "$DOTFILES_DIR/fish" "$HOME/.config"
+
+echo "ホームディレクトリにシンボリックリンクが作成されました。"
