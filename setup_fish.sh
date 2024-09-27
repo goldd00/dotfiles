@@ -18,3 +18,12 @@ if [[ "$SHELL" != "$SHELL_PATH" ]]; then
 else
     echo "既にデフォルトシェルが $SHELL_PATH です。"
 fi
+
+# fisherのインストール
+echo "fisherをインストールします。"
+if command -v fisher > /dev/null 2>&1; then
+    echo "既にfisherが存在します。"
+else
+    fish -c "curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher update"
+    echo "fisherをインストールしました。"
+fi
