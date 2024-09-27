@@ -31,6 +31,6 @@ else
     echo "Homebrew がインストールされていません。インストールを開始します。"
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-    echo 'eval $(/opt/homebrew/bin/brew shellenv)' >> /Users/stakasawa/.zprofile
+    echo 'eval $(/opt/homebrew/bin/brew shellenv)' >> /Users/stakasawa/.bash_profile
     eval $(/opt/homebrew/bin/brew shellenv)
 fi
