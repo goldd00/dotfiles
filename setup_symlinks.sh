@@ -35,7 +35,6 @@ for file in "$DOTFILES_DIR"/dots/.*; do
     
     # ホームディレクトリ直下に作成するパスを計算
     link_name="$HOME/$(basename "$file")"
-    
     # シンボリックリンクを作成
     create_symlink "$file" "$link_name"
 done
@@ -43,5 +42,8 @@ done
 # fishディレクトリ用のリンク作成
 create_symlink "$DOTFILES_DIR/fish/config.fish" "$HOME/.config/fish/config.fish"
 create_symlink "$DOTFILES_DIR/fish/fish_plugins" "$HOME/.config/fish/fish_plugins"
+
+# nvimディレクトリ用のリンク作成
+create_symlink "$DOTFILES_DIR/nvim" "$HOME/.config/nvim"
 
 echo "ホームディレクトリにシンボリックリンクが作成されました。"

@@ -1,2 +1,2 @@
--- clipboard
-vim.opt.clipboard:append{'unnamedplus'}
+require('keymaps')
+require('option')
