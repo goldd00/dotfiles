@@ -43,7 +43,4 @@ done
 create_symlink "$DOTFILES_DIR/fish/config.fish" "$HOME/.config/fish/config.fish"
 create_symlink "$DOTFILES_DIR/fish/fish_plugins" "$HOME/.config/fish/fish_plugins"
 
-# nvimディレクトリ用のリンク作成
-create_symlink "$DOTFILES_DIR/nvim" "$HOME/.config/nvim"
-
 echo "ホームディレクトリにシンボリックリンクが作成されました。"
